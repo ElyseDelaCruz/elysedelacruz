@@ -1,8 +1,8 @@
 /* EDIT THIS BLOCK with your own details */
 const D={
-photo:"photoofMe.jpg",name:"Elyse Kim Cyril L. Dela Cruz",loc:"Philippines",role:"3rd-Year BSIT Student | Full-Stack Developer | UI/UX Enthusiast",email:"",
+photo:"photoofMe.jpg",name:"Elyse Kim Cyril L. Dela Cruz",loc:"Philippines",role:"3rd-Year BSIT Student | Full-Stack Developer | UI/UX Enthusiast",email:"elysedlcrz@gmail.com",
 about:["I am a third-year Bachelor of Science in Information Technology student with a strong interest in web development, software development, and UI/UX design.","I enjoy creating functional applications, developing websites, and designing user-friendly interfaces. I have experience working with programming languages such as C, Java, PHP, JavaScript, and Python, along with modern web technologies and development tools.","I have worked on academic and personal projects involving database management, authentication systems, CRUD operations, business management applications, and frontend development.","I continuously improve my technical knowledge, programming skills, and problem-solving abilities through hands-on projects and independent learning."],
-tech:{"Programming languages":["C","Java","PHP","JavaScript","Python"],"Frontend development":["HTML5","CSS3","JavaScript","React.js","Tailwind CSS"],"Backend development":["PHP","Firebase","Firebase Cloud Functions"],"Database management":["MySQL","Firebase Firestore","Firebase Realtime Database"],"Frameworks and libraries":["React.js","Vite","Tailwind CSS"],"UI/UX design":["Figma","Wireframing","Prototyping","Interface Design","UI/UX Design"],"Development tools":["Visual Studio Code","NetBeans","XAMPP","Git","GitHub","WordPress"]},
+tech:{"Programming languages":["C","Java","PHP","JavaScript","Python"],"Frontend development":["HTML5","CSS3","JavaScript","React.js","Tailwind CSS"],"Backend development":["PHP","Laravel","Firebase","Firebase Cloud Functions"],"Database management":["MySQL","Firebase Firestore","Firebase Realtime Database"],"Frameworks and libraries":["React.js","Laravel","Vite","Tailwind CSS"],"UI/UX design":["Figma","Wireframing","Prototyping","Interface Design","UI/UX Design"],"Development tools":["Visual Studio Code","NetBeans","XAMPP","Git","GitHub","WordPress"]},
 projects:[
 {t:"Butterland Cafe Management System",url:"https://butterland-cafe.web.app/",img:"butterland.jpg",c:"Full-Stack Web Application",tech:["React.js","Vite","Tailwind CSS","Firebase","Cloud Firestore","Firebase Realtime Database","Firebase Cloud Functions","Cloud Storage"],d:"A web-based cafe management and online ordering system designed to streamline cafe operations and improve customer experience.",f:["Product and menu management","Customer ordering system","Order management","Delivery management","Rider management","Rider GPS tracking","Customer management","Promotions and coupon management","Customer reviews","Blog management","Cafe information management","Shop status management","SMS settings","Administrative dashboard"],g:"To develop a centralized cafe management platform that simplifies business operations, improves order processing, and provides a convenient ordering experience."},
 {t:"Admin and User Management System",img:"admin-dashboard.jpg",c:"Web Application",tech:["PHP","MySQL","HTML","CSS","JavaScript"],d:"A web-based management system that provides separate interfaces for administrators and regular users.",f:["User registration","Login authentication","Admin dashboard","User dashboard","CRUD operations","User information management","Database integration","Role-based access"],g:"To develop a management system that allows administrators to manage user records while providing users with their own dashboard."},
@@ -16,7 +16,7 @@ interests:["Full-Stack Web Development","Frontend Development","Backend Developm
 strengths:["Willingness to learn new technologies","Problem-solving mindset","Creativity in designing interfaces","Interest in software development","Adaptability to new development tools","Hands-on project development","Continuous learning and improvement"],
 goals:["To become a skilled software and full-stack developer capable of building useful, efficient, and user-friendly digital solutions."],
 social:[["GitHub","https://github.com/ElyseDelaCruz"],["LinkedIn","https://www.linkedin.com/in/elyse-dela-cruz-783907447/"],["Facebook","https://www.facebook.com/elyse.dlcrz/"]],
-gallery:["Photo 1","Photo 2","Photo 3","Photo 4","Photo 5","Photo 6"]
+gallery:[{src:"certificate-seo.jpg",t:"SEO 101 Webinar – Certificate of Participation (CLSU, Sept 2025)"},{src:"certificate-agile.jpg",t:"Google Agile Essentials – Coursera Specialization (Jul 2026)"}]
 };
 const $=i=>document.getElementById(i),E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ini=D.name.split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase();
@@ -32,7 +32,7 @@ $("pj").innerHTML=D.projects.map(p=>'<div class="pj"><h3>'+E(p.t)+'</h3><div cla
 $("go").innerHTML=D.goals.map(g=>'<div class="mini">'+E(g)+'</div>').join("");
 $("so").innerHTML=D.social.map(k=>'<a class="mini" href="'+E(k[1])+'" target="_blank" rel="noopener">'+lk+'<b>'+E(k[0])+'</b><br><span class="sm">'+E(k[1].replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))+'</span></a>').join("");
 $("co").innerHTML=D.email?'<a class="mini" href="mailto:'+E(D.email)+'"><b>Email</b><br>'+E(D.email)+'</a>':'<div class="mini"><b>Email</b><br><span class="sm">Not yet provided</span></div>';
-$("ga").innerHTML=D.gallery.map((g,i)=>'<div style="background:linear-gradient(135deg,hsl(0 0% '+(30+i*8)+'%),hsl(0 0% '+(15+i*6)+'%))">'+E(g)+'</div>').join("");
+$("ga").innerHTML=D.gallery.map((g,i)=>'<button class="gi" type="button" data-i="'+i+'" aria-label="View '+E(g.t)+'"><img src="'+E(g.src)+'" alt="'+E(g.t)+'" loading="lazy"><span>'+E(g.t)+'</span></button>').join("");
 $("ft").textContent="© "+new Date().getFullYear()+" "+D.name+". All rights reserved.";
 $("tg").onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
 /* Chat: answers questions from the data above using keyword matching */
@@ -73,3 +73,8 @@ const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return
 els.forEach(e=>io.observe(e))})();
 /* Scroll progress bar */
 (()=>{const bar=$("bar"),pg=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+"%"};addEventListener("scroll",pg,{passive:true});addEventListener("resize",pg);pg()})();
+
+/* Gallery lightbox: click a certificate to enlarge, click anywhere / Esc to close */
+(()=>{const lb=$("lb"),im=$("lbi"),close=()=>lb.classList.remove("open");
+$("ga").addEventListener("click",e=>{const b=e.target.closest(".gi");if(!b)return;const g=D.gallery[b.dataset.i];im.src=g.src;im.alt=g.t;lb.classList.add("open")});
+lb.addEventListener("click",close);addEventListener("keydown",e=>{if(e.key==="Escape")close()})})();

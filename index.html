@@ -23,11 +23,11 @@
  <div class="stats" id="stats"></div>
  <div class="grid">
   <div class="col">
-   <section class="card"><h2>About</h2><div id="ab"></div></section>
-   <section class="card"><h2>Tech stack</h2><div id="ts"></div></section>
-   <section class="card" id="projects"><h2>Projects</h2><div id="pj"></div></section>
+   <section class="card a-about"><h2>About</h2><div id="ab"></div></section>
+   <section class="card a-tech"><h2>Tech stack</h2><div id="ts"></div></section>
+   <section class="card a-proj" id="projects"><h2>Projects</h2><div id="pj"></div></section>
   </div>
-  <div class="col"><section class="card"><h2>Education</h2><ol class="tl" id="ex"></ol></section><section class="card"><h2>Career interests</h2><div class="chips" id="ci"></div></section><section class="card"><h2>Strengths</h2><div class="chips" id="st"></div></section></div>
+  <div class="col"><section class="card a-edu"><h2>Education</h2><ol class="tl" id="ex"></ol></section><section class="card a-int"><h2>Career interests</h2><div class="chips" id="ci"></div></section><section class="card a-str"><h2>Strengths</h2><div class="chips" id="st"></div></section></div>
  </div>
  <div class="col" style="margin-top:1rem">
   <section class="card"><div class="row3"><div><h2>Goals</h2><div id="go"></div></div><div><h2>Social links</h2><div id="so"></div></div><div><h2>Contact</h2><div id="co"></div></div></div></section>
@@ -41,6 +41,7 @@
  <div id="msgs" aria-live="polite"></div>
  <form class="cf" id="cf"><input id="cin" placeholder="Type your message…" autocomplete="off"><button type="submit">Send</button></form>
 </div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image"><button id="lbx" type="button" aria-label="Close">✕</button><img id="lbi" alt=""></div>
 <script src="script.js"></script>
 </body>
 </html>
